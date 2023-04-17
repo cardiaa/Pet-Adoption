@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %} Suggested {% endblock %}
+
+{% block content %}
+
+    <br> <h2 align="center">You might be interested in...</h2> <br>
+	<div class="column-container">
+    {% for message in messages %}
+        <div class="column">
+            <a href="{{ message['suggest'].get('link')[0] }}">
+                <figure class="pet-Image">
+                    <img loading="lazy" class="pet-Image" src="{{ message['suggest'].get('image')[0] }}" alt="{{ message['suggest'].get('name')[0] }}">
+                    <figcaption class="pet-info">
+                        <h3> {{ message['suggest'].get('name')[0] }} </h3>
+                        {{ message['suggest'].get('breed')[0] }}
+                    </figcaption>
+                </figure>
+            </a>
+        </div>  
+    {% endfor %}
+	</div>
+
+	<div class="footer">
+		<a href="{{ url_for('index') }}"><button class="button" type="button">Home</button></a>
+	</div>
+	
+{% endblock %}

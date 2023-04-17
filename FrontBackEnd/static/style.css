@@ -1,0 +1,160 @@
+@charset "UTF-8";
+
+	@font-face {
+	  font-family: 'Rocher';
+	  src: url(https://assets.codepen.io/9632/RocherColorGX.woff2);
+	}
+	
+	html {
+		position: relative;
+		min-height: 100%;
+	}
+
+	body {
+	  font-family: 'Rocher';
+	  text-align: center;
+	  font-size: 25px;
+	  min-height: 400px;
+	  margin-bottom: 100px;
+	  clear: both;
+	  display: flex;
+	  flex-direction: column;
+	  align-items: center;
+	  justify-content: center;
+	  background-color: #e7e7e7;
+	}
+
+	h1 {
+	  margin: 4;
+	}
+
+	@font-palette-values --Grays {
+	  font-family: Rocher;
+	  base-palette: 9;
+	}
+
+	@font-palette-values --Purples {
+	  font-family: Rocher;
+	  base-palette: 6;
+	}
+
+	@font-palette-values --Mint {
+	  font-family: Rocher;
+	  base-palette: 7;
+	}
+
+	.grays {
+	  font-palette: --Grays;
+	}
+
+	.purples {
+	  font-palette: --Purples;
+	}
+
+	.mint {
+	  font-palette: --Mint;
+	}
+
+	* {
+		box-sizing: border-box;
+	}
+	
+	.column-container {
+		margin: 0 auto;
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		grid-auto-rows: 1fr;
+		grid-column-gap: 25px;
+		grid-row-gap: 30px;
+	}
+	
+	.column {
+		border: solid;
+		border-radius: 4px;
+	}
+	
+	.row::after {
+		content: "";
+		clear: both;
+		display: table;
+	}
+	
+	input[type=text] {
+		width: 300px;
+		box-sizing: border-box;
+		border: 2px solid #ccc;
+		border-radius: 4px;
+		font-size: 16px;
+		padding: 12px 20px 12px 40px;
+		background: url("https://static.thenounproject.com/png/101791-200.png") no-repeat left;
+		background-size: 30px;		
+		background-color: white;
+		transition: width 0.4s ease-in-out;
+	}
+
+	input[type=text]:focus {
+		width: 60%;
+	}
+	
+	label[for=query] {
+		font-family: "Times New Roman", Times, serif;
+		font-size: 20px;
+	}
+	
+	.button {
+		color: white;
+		padding: 16px 32px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 16px;
+		margin: 4px 2px;
+		transition-duration: 0.4s;
+		cursor: pointer;
+		background-color: white;
+		border: 2px solid #ccc;
+		border-radius: 4px;
+		color: black;
+	}
+
+	.button:hover {
+		background-color: #FFFAF0;
+	}
+		
+	.footer {
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		background-color: rgb(246, 250, 250);
+		color: rgb(22, 21, 21);
+		text-align: center;
+		box-sizing: border-box;
+		overflow: hidden;
+	}
+
+	figure.pet-Image {
+		vertical-align: top;
+		text-align: center;
+		display: inline-block;
+	}
+
+	img {
+		width: 210px;
+		height: 210px;
+		background-color: #e7e7e7;;
+	}
+
+	.pet-info {
+		font-family: Georgia, serif;
+		font-size: 15px;
+		display: block;
+		color: black;
+	}
+
+	/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+	@media screen and (max-width: 500px) {
+		.column {
+			width: 100%;
+		}
+	}

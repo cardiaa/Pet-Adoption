@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %} Search Engine {% endblock %}
+
+{% block content %}
+
+<div align = "center">
+	<h1>Pet Adoption 🐕 </h1>
+	<form method = "post">
+		<label for="query">What are you looking for?</label>
+		<br>
+		<input type="text" name="query"
+			placeholder="Search your pet"
+			value="{{ request.form['query'] }}"> </input>
+		<br>
+		<button class="button" type="submit">Go!</button>
+	</form>
+</div>
+
+<br><br>
+	
+<div class="column-container">
+
+{% for message in messages %}
+	{% if 'result' in message %}
+	<div class="column">
+		<a href="{{ message['result'].get('link')[0] }}">
+			<figure class="pet-Image">
+				<img loading="lazy" class="pet-Image" src="{{ message['result'].get('image')[0] }}" alt="{{ message['result'].get('name')[0] }}">
+				<figcaption class="pet-info">
+					<h1> {{ message['result'].get('name')[0] }} </h1>
+					<h2> {{ message['result'].get('breed')[0] }} </h2>
+					<h3> Matched in: 
+						{% for key in message['highlighted'] %}
+						<br> {{ key }} 
+						{% endfor %} 
+					</h3>
+				</figcaption>
+			</figure>
+		</a>
+	</div>
+	{% endif %}
+	{% if 'no_results' in message %}
+	<h2> {{ messages[0]['no_results'] }} </h2>
+	{% endif %}
+{% endfor %}
+
+</div>
+
+<div class="footer">
+	<a href="{{ url_for('suggester') }}"><button class="button" type="button">Suggested Pets</button></a>
+</div>
+
+{% endblock %}
